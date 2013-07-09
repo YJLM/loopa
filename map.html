@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Map?</title>    
+    
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+    
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+    <script type="text/javascript" src="lib/d3.v3.min.js"></script>
+    <script type="text/javascript" src="lib/topojson.v1.min.js"></script>
+
+  </head>
+  <body>
+    <div id="map" style="width:450px;height:646px"></div>
+    <a href="#" style="float: left; display: block;">Hola</a>
+    <script type="text/javascript">
+      var map = new L.map("map", {
+        center: [4.657126087,-74.1385294118],
+        zoom: 11
+      })
+      .addLayer(new L.TileLayer("http://{s}.tile.cloudmade.com/82657b936bb44375b3e137120221986d/51851/256/{z}/{x}/{y}.png"));
+      
+      var svg = d3.select(map.getPanes().overlayPane).append("svg");
+      var g = svg.append("g").classed('leaflet-zoom-hide',true).attr('stroke','white');
+      
+      d3.json("data/km2.json", function(error, collection) {
+        var bounds = d3.geo.bounds(collection);
+        var path = d3.geo.path().projection(project);
+        
+        var feature = g.selectAll("path")
+                       .data(collection.features)
+                       .enter().append("path").style('opacity',0.3).on("mouseover", function(d){d3.select(this).style('fill','red'); });
+
+        map.on("viewreset", reset);
+        reset();
+                    
+        // Reposition the SVG to cover the features.
+        function reset() {
+
+          var bottomLeft = project(bounds[0]),
+              topRight = project(bounds[1]);
+
+          svg .attr("width", topRight[0] - bottomLeft[0])
+              .attr("height", bottomLeft[1] - topRight[1])
+              .style("margin-left", bottomLeft[0] + "px")
+              .style("margin-top", topRight[1] + "px");
+
+          g   .attr("transform", "translate(" + -bottomLeft[0] + "," + -topRight[1] + ")");
+
+          feature.attr("d", path);
+        }
+        
+        function project(x) {
+          var point = map.latLngToLayerPoint(new L.LatLng(x[1], x[0]));
+          return [point.x, point.y];
+        }
+        
+      });
+      
+      
+    </script>
+  </body>
+</html>

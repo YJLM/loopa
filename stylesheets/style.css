@@ -1,0 +1,339 @@
+/* General */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fafafa;
+}
+
+h3,
+h2 {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+.relative {
+  position: relative;
+}
+
+.blue {
+ color: #00add7;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+  
+.gray {
+  color: #CCCCCC;
+}
+
+.clear {
+  clear: both;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.big {
+  font-size: 3em;
+}
+
+.content-wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Navbar */
+
+#navbar {
+  background-color: #151515;
+}
+
+#navbar a.nav {
+  float: left;
+  display: block;
+  text-decoration: none;
+  color: #dddddd;
+  padding: 1em;
+  font-size: 0.9em;
+  transition: background-color 200ms linear;
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+}
+
+#navbar a.nav:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+
+}
+
+/* Main */
+
+#main .content-wrapper {
+  background-color: #FFFFFF;
+}
+
+#square-info {
+  position: absolute;  
+  transition: left 200ms linear, top 200ms linear;
+  -webkit-transition: left 200ms linear, top 200ms linear;
+  -moz-transition: left 200ms linear, top 200ms linear;
+  -o-transition: left 200ms linear, top 200ms linear;
+  background-color: rgba(255,255,255,0.95);
+  padding: 5px;
+  margin-left: 30px;
+  margin-top: -15px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  box-shadow: 0px 0px 5px #000000;
+  -webkit-box-shadow: 0px 0px 5px #000000;
+  -moz-box-shadow: 0px 0px 5px #000000;  
+  z-index: 100;
+}
+
+.square-km {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 200ms linear;
+  -webkit-transition: opacity 200ms linear;
+  -moz-transition: opacity 200ms linear;
+  -o-transition: opacity 200ms linear;
+}
+
+.square-km:hover {
+  opacity: 0.9;
+}
+
+.square-km.active {detail
+  opacity: 0.9;
+}
+
+.km-stat {
+  text-align: center;
+  color: #555753;
+  margin: 0.5em 0.9em;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+}
+
+.stat-name {
+  text-transform: uppercase;  
+  font-weight: normal;
+}
+
+.square-km-overview {
+  opacity: 0;
+  margin-left: -3em;
+}
+
+/* Sidebar */
+
+#sidebar {
+  position: absolute;
+  left: -1.9em;
+  top: 1.5em;
+  transition: left 300ms ease-out;
+  -webkit-transition: left 300ms ease-out;
+  -moz-transition: left 300ms ease-out;
+  -o-transition: left 300ms ease-out;
+}
+
+#sidebar:hover {
+  left: -8em;
+}
+
+#sidebar a.nav {
+  color: #CCCCCC;
+  text-decoration: none;
+  display: block;
+  padding: 0.5em;
+  background-color: #151515;
+}
+
+#sidebar a.nav span {
+  color: #FFFFFF;
+  display: inline-block;
+  width: 2em;
+}
+
+#sidebar a.nav.active,
+#sidebar a.nav:hover {
+  background-color: #FFFFFF;
+  color: #888a85;
+}
+
+#sidebar a.nav.active span,
+#sidebar a.nav:hover span {
+  color: #00add7;
+}
+
+#sidebar a.nav.active {
+  cursor: auto;
+}
+
+.svg-container {
+  position: absolute;
+  width: 440px;
+  height: 646px;
+}
+
+.square-detail-panel,
+.view-info-panel {
+  position: absolute;
+  left: 50%;
+  width: 50%;
+  background-color: #FFFFFF;  
+  box-shadow: 0px 2px 3px #CCCCCC;
+  -webkit-box-shadow: 0px 2px 3px #CCCCCC;
+  -moz-box-shadow: 0px 2px 3px #CCCCCC;
+  
+}
+
+.square-detail-panel {
+  opacity: 0;
+  top: 12em;
+  margin-top: 1em;
+}
+
+.inner-panel {
+  margin: 1em;
+}
+
+/* Button */
+
+.btn-group {
+  margin: 0.5em 0;
+}
+
+a.btn {
+  display: inline-block;  
+  padding: 0.5em;
+  color: #141414;
+  text-decoration: none; 
+  border: 1px solid #CCCCCC;
+  margin-left: -1px;
+  
+  background: #f5f5f5; 
+  background: -moz-linear-gradient(top,  #f5f5f5 1%, #fcfcfc 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f5f5f5), color-stop(100%,#fcfcfc));
+  background: -webkit-linear-gradient(top,  #f5f5f5 1%,#fcfcfc 100%); 
+  background: -o-linear-gradient(top,  #f5f5f5 1%,#fcfcfc 100%); 
+  background: -ms-linear-gradient(top,  #f5f5f5 1%,#fcfcfc 100%); 
+  background: linear-gradient(to bottom,  #f5f5f5 1%,#fcfcfc 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f5f5', endColorstr='#fcfcfc',GradientType=0 );
+
+  
+}
+
+a.btn:first-child {
+  border-radius: 6px 0 0 6px;
+  -webkit-border-radius: 6px 0 0 6px;
+  -moz-border-radius: 6px 0 0 6px;
+  -o-border-radius: 6px 0 0 6px;  
+}
+
+a.btn:last-child {
+  border-radius: 0 6px 6px 0;
+  -webkit-border-radius: 0 6px 6px 0;
+  -moz-border-radius: 0 6px 6px 0;
+  -o-border-radius: 0 6px 6px 0;  
+}
+
+a.btn:hover {
+  background: #F5F5F5;
+}
+
+/* Scales */
+.colour-scale {
+  margin: 1em 0;
+}
+
+.scale-step {
+  display: inline-block;
+  width: 20%;
+  height: 2em;
+  vertical-align: top;
+  position: relative;
+  text-align: center;
+}
+
+.scale-step span {
+  display: block;
+  position: absolute;
+  top: 100%;
+  background-color: #151515;
+  color: #CCCCCC;
+  font-size: 0.9em;
+  padding: 0.5em;
+  opacity: 0;
+  transition: opacity 200ms linear;
+  -webkit-transition: opacity 200ms linear;
+  -moz-transition: opacity 200ms linear;
+  -o-transition: opacity 200ms linear;
+}
+
+.scale-step:hover span {
+  opacity: 1;
+}
+
+/* Tab views */
+
+.tabs-viewport {
+  overflow: hidden;
+}
+
+.tab-view {
+  height: 300px;
+}
+
+.tab-view.line-view {
+  background: url('../images/ui/line-view.png') no-repeat center center;
+}
+
+.tab-view.pie-view {
+  background: url('../images/ui/pie-view.png') no-repeat center center;
+}
+
+.tab {
+  width: 25%;
+  height: 35px;
+  display: inline-block;
+  background-position: center 0;
+  background-repeat: no-repeat;
+}
+
+.tab.active {
+  background-position: center -35px;
+}
+
+.tab.pie {
+  background-image: url('../images/ui/pie-chart-tab.png');
+}
+
+.tab.line {
+  background-image: url('../images/ui/line-tab.png');
+}
+
+.tab.curve {
+  background-image: url('../images/ui/curve-tab.png');
+}
+
+.tab.map {
+  background-image: url('../images/ui/map-tab.png');
+}
