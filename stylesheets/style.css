@@ -140,6 +140,7 @@ h3 {
 .square-km-overview {
   opacity: 0;
   margin-left: -3em;
+  display: none;
 }
 
 /* Sidebar */

@@ -15,6 +15,8 @@
     <script type="text/javascript" src="js/daily_parser.js"></script>
     <script type="text/javascript" src="js/daily_scale_handler.js"></script>
     
+    <script type="text/javascript" src="js/content_managers/totals.js"></script>
+    
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
     <link rel="stylesheet" href="stylesheets/reset.css" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
@@ -34,10 +36,10 @@
         <div id="sidebar">
           <a href="#" data-day="monday" class="nav"><span>01</span>Monday</a>
           <a href="#" data-day="tuesday" class="nav"><span>02</span>Tuesday</a>
-          <a href="#" class="nav"><span>03</span>Wednesday</a>
-          <a href="#" class="nav"><span>04</span>Thursday</a>
-          <a href="#" class="nav"><span>05</span>Friday</a>
-          <a href="#" class="nav"><span>06</span>Saturday</a>          
+          <a href="#" data-day="wednesday" class="nav"><span>03</span>Wednesday</a>
+          <a href="#" data-day="thursday" class="nav"><span>04</span>Thursday</a>
+          <a href="#" data-day="friday" class="nav"><span>05</span>Friday</a>
+          <a href="#" data-day="saturday" class="nav"><span>06</span>Saturday</a>          
         </div>
                 
         <div class="svg-container" id="daily-map"></div> 
@@ -50,7 +52,7 @@
               </div>
               <div class="right">
                 <div class="btn-group">
-                  <a href="#" class="view-switcher btn" data-view="clients">Clients</a><a href="#" class="view-switcher btn" data-view="orders">Orders</a><a href="#" class="view-switcher btn" data-view="income">Income</a>
+                  <a href="#" class="view-switcher btn" data-view="clients">Clients</a><a href="#" class="view-switcher btn" data-view="income">Income</a>
                 </div>  
               </div>
               <div class="clear"></div>

@@ -2,21 +2,20 @@ var daily_parser = function(opts) {
   var _self = {    
     buildSqkm: function(data) {
       var sqkm = {
-        monday: this.getDayData(data, 'm', 'monday'),
-        tuesday: this.getDayData(data, 't', 'tuesday')
+        monday: this.getDayData(data, 'mo'),
+        tuesday: this.getDayData(data, 'tu'),
+        wednesday: this.getDayData(data, 'we'),
+        thursday: this.getDayData(data, 'th'),
+        friday: this.getDayData(data, 'fr'),
+        saturday: this.getDayData(data, 'sa'),
+        sunday: this.getDayData(data, 'su')
       };
       return sqkm;
     },
-    getDayData: function(data, day, scale_key) {
+    getDayData: function(data, day) {
       var dayData = {
         income: +data[day + 'income'],
-        clients: +data[day + 'clients'],
-        orders: +data[day + 'orders'],
-        top_clients: [
-          data[day + 'client1'],
-          data[day + 'client2'],
-          data[day + 'client3']
-        ]
+        clients: +data[day + 'clients']
       };
       return dayData;
     }

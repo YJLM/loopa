@@ -37,12 +37,13 @@ var map_controller = function(opts) {
       this.redraw();
     },
     updateMarker: function() {
-      console.log(this.active_km.data());
-      this.last_marker
-          .closePopup()
-          .unbindPopup()
-          .bindPopup(this.getMarkerPopupMarkup( this.active_km.datum() ))
-          .openPopup();
+      if(this.last_marker) {
+        this.last_marker
+            .closePopup()
+            .unbindPopup()
+            .bindPopup(this.getMarkerPopupMarkup( this.active_km.datum() ))
+            .openPopup();
+      }
     },
     redraw: function() {
       this.g.selectAll("path")
@@ -66,7 +67,7 @@ var map_controller = function(opts) {
     loadData: function() {
       queue()
         .defer(d3.json, "data/km2.json")
-        .defer(d3.csv, "data/km2.csv")
+        .defer(d3.csv, "data/per_day.csv")
         .await(function(a,b,c){ _self.onDataLoaded(a,b,c); });      
     },
     mergeData: function(data) {

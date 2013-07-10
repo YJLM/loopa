@@ -6,15 +6,15 @@ var daily_scale_handler = function(opts) {
     scale: null,
     ranges: {},
     days: [
-      { range_key: 'monday', data_key: 'm' },
-      { range_key: 'tuesday', data_key: 't' },
-      { range_key: 'wednesday', data_key: 'w' },
-      { range_key: 'thursday', data_key: 'r' },
-      { range_key: 'friday', data_key: 'f' },
-      { range_key: 'saturday', data_key: 's' },
-      { range_key: 'sunday', data_key: 'd' }
+      { range_key: 'monday', data_key: 'mo' },
+      { range_key: 'tuesday', data_key: 'tu' },
+      { range_key: 'wednesday', data_key: 'we' },
+      { range_key: 'thursday', data_key: 'th' },
+      { range_key: 'friday', data_key: 'fr' },
+      { range_key: 'saturday', data_key: 'sa' },
+      { range_key: 'sunday', data_key: 'su' }
     ],
-    view_keys: ['orders','income','clients'],    
+    view_keys: ['income','clients'],    
     init: function(data, day, view) {
       this.scale = d3.scale.quantize();
       this.initScaleRanges(data);

@@ -31,8 +31,11 @@ var app = {
   },
   initOverview: function() {
     var _self = this;
+    var content_manager = totals();
+    content_manager.load();
     this.sqkm_overview = sqkm_overview({
       container: d3.select('.square-km-overview'),
+      content_manager: content_manager,
       onClose: function() {
         _self.sqkm_details.hide();
         _self.showViewPanel();
@@ -67,6 +70,7 @@ var app = {
     });
   },  
   squareOnClick: function(data, element) {        
+    this.sqkm_overview.update(data.properties.id);  
     this.sqkm_details.show();    
     this.sqkm_overview.show();    
     this.hideViewPanel();

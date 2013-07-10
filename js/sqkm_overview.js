@@ -1,7 +1,7 @@
 var sqkm_overview = function(opts) {
   var _self = {
-    container: null,
-    overview_container: null,
+    container: null,    
+    content_manager: null,
     init: function() {
       this.buildMarkup();
     },
@@ -23,7 +23,15 @@ var sqkm_overview = function(opts) {
       header.append('div').classed('clear',true);      
     },
     buildStatsMarkup: function(inner_panel) {
-      this.overview_container = inner_panel.append('div').classed('overview-container',true);      
+      var overview_container = inner_panel.append('div').attr('class', 'overview-container');   
+      
+      var stat_container = overview_container.append('div').attr('class', 'left km-stat');
+      this.income_container = stat_container.append('div').attr('class', 'big');
+      stat_container.append('div').attr('class','stat-name').text('income / month');
+      
+      stat_container = overview_container.append('div').attr('class', 'left km-stat');
+      this.clients_container = stat_container.append('div').attr('class', 'big');
+      stat_container.append('div').attr('class','stat-name').text('clients');
     },
     show: function() {
       this.container
@@ -38,35 +46,10 @@ var sqkm_overview = function(opts) {
                     .style('opacity',0)
                     .style('margin-left', '-3em');
     },
-    update: function(data) {
-      var stats = this.overview_container.selectAll('div.km-stat')
-                                         .data(data); 
-      console.log(stats.data());
-      var new_stats = stats.enter()
-                            .append('div')
-                            .attr('class','left km-stat');
-                            
-      new_stats.append('div')
-               .attr('class','big');
-               
-      new_stats.append('div')
-              .attr('class','stat-name');
-      
-      stats.selectAll('div.big').text(function(d){ 
-        return d.value; 
-      });
-      
-      stats.selectAll('div.stat-name').text(function(d){ 
-        return d.stat_name; 
-      });
-
-                                         
-/*      for(var i = 0; i < 3; ++i) {
-        var stat = container.append('div').attr('class','left km-stat');
-        stat.append('div').classed('big',true).text(10);
-        stat.append('div').classed('stat-name',true).text('orders');
-      } 
-      container.append('div').classed('clear',true);        */
+    update: function(id) {
+      var data = this.content_manager.get(id);
+      this.income_container.text('$' + (+data.income).toShortString());
+      this.clients_container.text(+data.clients);                                            
     },
     onClose: function() {
       
