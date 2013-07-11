@@ -1,6 +1,7 @@
 var sqkm_overview = function(opts) {
   var _self = {
     container: null,    
+    km_container: null,
     content_manager: null,
     init: function() {
       this.buildMarkup();
@@ -13,7 +14,7 @@ var sqkm_overview = function(opts) {
     buildHeaderMarkup: function(inner_panel) {
       var header = inner_panel.append('div').classed('panel-header',true);
       var left = header.append('div').classed('left',true);
-      left.append('h2').text('KM 10');
+      this.km_container = left.append('h2').text('KM 10');
       left.append('h3').text('overview').classed('blue',true);
       var right = header.append('div').classed('right',true);
       right.append('a').text('x').attr('href','#').on('click', function(){
@@ -48,6 +49,7 @@ var sqkm_overview = function(opts) {
     },
     update: function(id) {
       var data = this.content_manager.get(id);
+      this.km_container.text('KM ' + id);
       this.income_container.text('$' + (+data.income).toShortString());
       this.clients_container.text(+data.clients);                                            
     },

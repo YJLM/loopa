@@ -38,7 +38,7 @@ var daily_scale_handler = function(opts) {
       for(var i = 0; i < range_length; ++i) {
         var bottom = Math.round(i*step);
         var top = Math.round(bottom + step - 1);      
-        steps.push(bottom + '-' + top);
+        steps.push(bottom.toShortString() + '-' + top.toShortString());
       }
       return steps;
     },

@@ -16,8 +16,11 @@ Number.prototype.toShortString = function() {
   else if(this >= 1000000) {
     return this.toMillions();
   }
-  else {
+  else if(this >= 1000) {
     return this.toThousands();
+  }
+  else {
+    return this.toFixed(1);
   }
 };
 
