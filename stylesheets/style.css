@@ -1,3 +1,15 @@
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 10px;
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  -webkit-border-radius: 1ex;    
+}
+
 /* General */
 
 body {
@@ -120,7 +132,7 @@ h3 {
   opacity: 0.9;
 }
 
-.square-km.active {detail
+.square-km.active {
   opacity: 0.9;
 }
 
@@ -303,12 +315,9 @@ a.btn:hover {
   height: 300px;
 }
 
-.tab-view.line-view {
-  background: url('../images/ui/line-view.png') no-repeat center center;
-}
-
-.tab-view.pie-view {
-  background: url('../images/ui/pie-view.png') no-repeat center center;
+.tab-view svg {
+  width: 448px;
+  height: 300px;
 }
 
 .tab {
@@ -337,4 +346,69 @@ a.btn:hover {
 
 .tab.map {
   background-image: url('../images/ui/map-tab.png');
+}
+
+/* Products list */
+
+.pie-view .nv-slice {
+  cursor: pointer;
+}
+
+.chart-view {
+  display: none;
+  opacity: 0;
+}
+
+.chart-view.active {
+  display: block;
+  opacity: 1;
+}
+
+
+.products-table {
+  height: 240px;
+}
+
+/* Tables */
+
+.scroll {
+  overflow: auto;
+}
+
+.table-wrapper {
+  margin: 1em 0;
+}
+
+table.custom-table {
+  border-collapse: separate;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  width: 100%;
+  color: #686873;
+  border: 1px solid #dddddd;    
+  font-size: 0.9em;
+}
+
+table.custom-table th {
+  font-weight: bold;  
+  text-align: left;
+}
+
+table.custom-table td,
+table.custom-table th {
+  padding: 0.8em 0.5em;
+}
+
+table.custom-table td {
+  border-top: 1px solid #dddddd;    
+}
+
+table.custom-table a {
+  text-decoration: none;
+}
+
+table.custom-table a:hover {
+  border-bottom: 1px dotted #00add7;
 }

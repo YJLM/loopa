@@ -60,4 +60,4 @@ var sqkm_overview = function(opts) {
   for(key in opts) _self[key] = opts[key];
   _self.init();
   return _self;
-}
+};

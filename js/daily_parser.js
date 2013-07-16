@@ -22,4 +22,4 @@ var daily_parser = function(opts) {
   };
   for(key in opts) _self[key] = opts[key];
   return _self;
-}
+};

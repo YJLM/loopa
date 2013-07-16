@@ -35,3 +35,6 @@ Number.prototype.toThousands = function() {
 Number.prototype.toBillions = function() {
   return (this / 1000000000).toFixed(1) + 'B';
 };
+
+L.Icon.Default.imagePath = "stylesheets/images";
+nv.dev = false;

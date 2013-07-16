@@ -58,7 +58,7 @@ var map_controller = function(opts) {
         center: this.center,
         zoom: this.zoom
       })
-      .addLayer(new L.TileLayer(config.cloudmade.layer_url() ));
+      .addLayer(new L.TileLayer(loopa.config.cloudmade.layer_url() ));
     },
     initOverlay: function() {
       this.svg = d3.select(this.map.getPanes().overlayPane).append("svg");
@@ -119,7 +119,7 @@ var map_controller = function(opts) {
     getMarkerPopupMarkup: function(data) {
       var s = '<span class="blue uppercase">' + this.current_date + ' stats </span><br />';
       s += 'Clients: ' + data.properties[this.current_date].clients + '<br />';
-      s += 'Income: $' + data.properties[this.current_date].income.toMoney(2, '.', ',') + '<br />';
+      s += 'Income: $' + data.properties[this.current_date].income.toMoney() + '<br />';
       return s;
     },
     squareOnClick: function(data, element) {
@@ -129,16 +129,14 @@ var map_controller = function(opts) {
       var lat = bottom_left[1] + (top_right[1] - bottom_left[1]) / 2;
       var long = bottom_left[0] + (top_right[0] - bottom_left[0]) / 2;
       return [lat, long];    
-    },
-    squareClicked: function(data, element) {
-      
     },    
     reset: function(features) {      
       var bottom_left = this.project(this.bounds[0]),
           top_right = this.project(this.bounds[1]);
 
-      this.svg.attr("width", top_right[0] - bottom_left[0])
-          .attr("height", bottom_left[1] - top_right[1])
+      this.svg
+          .attr("width", top_right[0] - bottom_left[0])
+          .attr("height", bottom_left[1] - top_right[1])          
           .style("margin-left", bottom_left[0] + "px")
           .style("margin-top", top_right[1] + "px");
       this.g.attr("transform", "translate(" + -bottom_left[0] + "," + -top_right[1] + ")");            
@@ -153,4 +151,4 @@ var map_controller = function(opts) {
   for(key in opts) _self[key] = opts[key];
   _self.init();
   return _self;
-}
+};
