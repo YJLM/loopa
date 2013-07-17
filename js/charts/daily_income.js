@@ -14,7 +14,7 @@ loopa.charts.daily_income = function(opts) {
     },
     initChart: function() {
       this.chart = nv.models.lineChart()
-                              .x(function(d){ return d.day; })
+                              .x(function(d,i){ return d.day; })
                               .y(function(d){ return d.income; });
 
       this.chart.xAxis.axisLabel("Day").tickFormat(function(d){

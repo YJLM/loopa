@@ -5,14 +5,19 @@ var app = {
   current_day_container: null,
   active_view_switcher: null,
   view_panel: null,
+  ranking_cm: null,
   init: function() {
+    this.initRankingContentManager();
     this.initMap();
     this.initDetails();
     this.initViewSwitcher();
     this.initSidebar();
     this.initCurrentDayContainer();
     this.initViewPanel();
-    this.initOverview();
+    this.initOverview();    
+  },
+  initRankingContentManager: function() {
+    this.ranking_cm = loopa.content_managers.sqkm_ranking();
   },
   initViewPanel: function() {
     this.view_panel = d3.select('#daily-view-panel');
@@ -33,7 +38,9 @@ var app = {
   initOverview: function() {
     var _self = this;
     var content_manager = loopa.content_managers.totals();
-    content_manager.load();
+    content_manager.load(function(data){
+      _self.ranking_cm.load(data);
+    });
     this.sqkm_overview = sqkm_overview({
       container: d3.select('.square-km-overview'),
       content_manager: content_manager,
@@ -52,6 +59,14 @@ var app = {
   addCharts: function() {
     this.addIncomeChart();
     this.addTopProductsChart();    
+    this.addRankingChart();
+  },
+  addRankingChart: function() {
+    var chart = loopa.charts.sqkm_ranking({
+      content_manager: this.ranking_cm,
+      container: this.sqkm_details.tabs_view_wrapper.select('.curve-view')
+    });
+    this.sqkm_details.addChart(chart);
   },
   addIncomeChart: function() {
     var cm = loopa.content_managers.daily();
@@ -98,8 +113,9 @@ var app = {
     });
   },  
   squareOnClick: function(data, element) {        
-    this.sqkm_overview.update(data.properties.id);  
-    this.sqkm_details.update(data.properties.id);    
+    this.sqkm_overview.update(data.properties.id); 
+    var center = this.getSquareCenter(data.geometry.coordinates[0][0],data.geometry.coordinates[0][2]);
+    this.sqkm_details.update(data.properties.id,center);    
     this.sqkm_details.show();    
     this.sqkm_overview.show();    
     this.hideViewPanel();

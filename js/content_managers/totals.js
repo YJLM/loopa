@@ -2,7 +2,7 @@ loopa.content_managers.totals = function(opts) {
   var _self = {
     file: "data/totals.csv",
     data: {},
-    load: function() {
+    load: function(callback) {
       d3.csv(_self.file, function(error,data) {
         if(error) {
             
@@ -11,6 +11,7 @@ loopa.content_managers.totals = function(opts) {
           data.forEach(function(row){
             _self.data[row.id] = _self.parseRow(row);
           });
+          if(callback) callback(_self.data); 
         }
       });
     },

@@ -348,6 +348,10 @@ a.btn:hover {
   background-image: url('../images/ui/map-tab.png');
 }
 
+.curve-view {
+  overflow: auto; 
+}
+
 /* Products list */
 
 .pie-view .nv-slice {
@@ -412,3 +416,11 @@ table.custom-table a {
 table.custom-table a:hover {
   border-bottom: 1px dotted #00add7;
 }
+
+.nvd3 .nv-groups .nv-point.active {
+  stroke-opacity: 0.5 !important;
+  fill-opacity: 0.5 !important;
+  stroke-width: 20px;
+  stroke: red;
+}
+

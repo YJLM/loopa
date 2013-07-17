@@ -1,6 +1,7 @@
 var loopa = {
   charts: {},
   content_managers: {},
+  maps: {},
   utils: {
     isEmpty: function(obj) {
       for(var name in obj) return false;

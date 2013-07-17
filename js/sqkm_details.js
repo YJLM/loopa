@@ -7,6 +7,7 @@ var sqkm_details = function(opts) {
     view_width: 448,
     active_tab: null,
     charts: [],
+    map: null,
     tabs: [      
       {index: 0, icon: 'line', view: 'line-view'},
       {index: 1, icon: 'pie', view: 'pie-view'},
@@ -14,7 +15,13 @@ var sqkm_details = function(opts) {
       {index: 3, icon: 'map', view: 'map-view'}
     ],
     init: function() {
-      this.buildMarkup();     
+      this.buildMarkup();  
+      this.initMap();   
+    },
+    initMap: function() {
+      this.map = loopa.maps.clients_map({
+        container: this.tabs_view_wrapper.select('.map-view')[0][0]        
+      });  
     },
     buildMarkup: function() {
       var inner_panel = this.container.append('div').attr('class','inner-panel');
@@ -68,10 +75,11 @@ var sqkm_details = function(opts) {
                     .style('opacity',0)
                     .style('margin-top', '1em');
     },
-    update: function(id) {       
+    update: function(id,coordinates) {       
       this.charts.forEach(function(chart){
         chart.draw(id);
       });
+      this.map.update(coordinates);
     },
     addChart: function(chart) {
       this.charts.push(chart);
