@@ -320,6 +320,11 @@ a.btn:hover {
   height: 300px;
 }
 
+.tab-view.map-view svg {
+  width: auto;
+  height: auto;
+}
+
 .tab {
   width: 25%;
   height: 35px;
@@ -423,4 +428,17 @@ table.custom-table a:hover {
   stroke-width: 20px;
   stroke: red;
 }
+
+/* Clients */
+
+circle.client {
+  fill-opacity: 0.5;
+  fill: #00add7;
+  cursor: pointer;  
+}
+
+circle.client:hover {
+  fill-opacity: 0.9;  
+}
+
 

@@ -19,8 +19,11 @@ var sqkm_details = function(opts) {
       this.initMap();   
     },
     initMap: function() {
+      var cm = loopa.content_managers.clients_map();
+      cm.load();
       this.map = loopa.maps.clients_map({
-        container: this.tabs_view_wrapper.select('.map-view')[0][0]        
+        container: this.tabs_view_wrapper.select('.map-view')[0][0],        
+        content_manager: cm
       });  
     },
     buildMarkup: function() {
@@ -79,7 +82,7 @@ var sqkm_details = function(opts) {
       this.charts.forEach(function(chart){
         chart.draw(id);
       });
-      this.map.update(coordinates);
+      this.map.update(id,coordinates);
     },
     addChart: function(chart) {
       this.charts.push(chart);
