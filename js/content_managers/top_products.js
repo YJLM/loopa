@@ -1,6 +1,6 @@
 loopa.content_managers.top_products = function(opts) {
   var _self = {
-    file: "data/top_products.csv",
+    file: "top_products.csv",
     data: {},
     get: function(id) {
       categories = _self.data[id];
@@ -26,7 +26,7 @@ loopa.content_managers.top_products = function(opts) {
       return values;
     },
     load: function() {
-      d3.csv(this.file, function(error, data){
+      d3.csv(loopa.data.getFilename(this.file), function(error, data){
         if(error){
         
         }

@@ -1,4 +1,4 @@
-var sqkm_details = function(opts) {
+loopa.widgets.sqkm_details = function(opts) {
   var _self = {
     tabs_container: null,
     tabs_view_wrapper: null,

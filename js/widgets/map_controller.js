@@ -1,7 +1,7 @@
-var map_controller = function(opts) {
+loopa.widgets.map_controller = function(opts) {
   var _self = {
     map: null,
-    center: [4.657126087,-74.1385294118],
+    center: [0,0],
     svg: null,
     g: null,
     zoom: 11,
@@ -16,6 +16,8 @@ var map_controller = function(opts) {
     scale_handler: null,
     last_marker: null,
     active_km: null,
+    data_file: null,
+    geojson_file: "km2.json",
     init: function() {
       this.initMap();      
       this.initPath();
@@ -53,7 +55,7 @@ var map_controller = function(opts) {
               return _self.scale_handler.scale(d.properties[_self.current_date][_self.current_view]); 
             });
     },
-    initMap: function() { 
+    initMap: function() {       
       this.map = new L.map(this.container_id, {
         center: this.center,
         zoom: this.zoom
@@ -66,8 +68,8 @@ var map_controller = function(opts) {
     },
     loadData: function() {
       queue()
-        .defer(d3.json, "data/km2.json")
-        .defer(d3.csv, "data/per_day.csv")
+        .defer(d3.json, loopa.data.getFilename(this.geojson_file))
+        .defer(d3.csv, loopa.data.getFilename(this.data_file))
         .await(function(a,b,c){ _self.onDataLoaded(a,b,c); });      
     },
     mergeData: function(data) {
@@ -101,6 +103,32 @@ var map_controller = function(opts) {
                             
       this.map.on("viewreset", function(){ _self.reset(features); });
       this.reset(features);
+      this.centerMap();      
+    },
+    centerMap: function() {
+      var max_latitude = d3.max(this.feature_collection.features, function(feature) { 
+        return d3.max(feature.geometry.coordinates, function(array){
+          return array[0][1];
+        });
+      });
+      var min_latitude = d3.min(this.feature_collection.features, function(feature) { 
+        return d3.min(feature.geometry.coordinates, function(array){
+          return array[0][1];
+        });
+      });
+      
+      var max_longitude = d3.max(this.feature_collection.features, function(feature) { 
+        return d3.max(feature.geometry.coordinates, function(array){
+          return array[0][0];
+        });
+      });
+      var min_longitude = d3.min(this.feature_collection.features, function(feature) { 
+        return d3.min(feature.geometry.coordinates, function(array){
+          return array[0][0];
+        });
+      });
+      
+      this.map.setView([(max_latitude + min_latitude) / 2, (max_longitude + min_longitude) / 2], this.zoom);
     },
     _squareOnClick: function(data, element) {
       this.active_km = element;

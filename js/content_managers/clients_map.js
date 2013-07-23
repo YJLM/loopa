@@ -1,9 +1,9 @@
 loopa.content_managers.clients_map = function(opts) {
   var _self = {
-    file: 'data/clients.csv',
+    file: 'clients.csv',
     data: {},
     load: function() {
-      d3.csv(this.file, function(error, data){
+      d3.csv(loopa.data.getFilename(this.file), function(error, data){
         if(error){
         
         }

@@ -1,9 +1,9 @@
 loopa.content_managers.totals = function(opts) {
   var _self = {
-    file: "data/totals.csv",
+    file: "totals.csv",
     data: {},
     load: function(callback) {
-      d3.csv(_self.file, function(error,data) {
+      d3.csv(loopa.data.getFilename(_self.file), function(error,data) {
         if(error) {
             
         }

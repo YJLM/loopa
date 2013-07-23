@@ -87,17 +87,13 @@ h3 {
   -o-transition: background-color 200ms linear;
 }
 
+#navbar a.nav.active,
 #navbar a.nav:hover {
   background-color: #000000;
   color: #FFFFFF;
-
 }
 
 /* Main */
-
-#main .content-wrapper {
-  background-color: #FFFFFF;
-}
 
 #square-info {
   position: absolute;  
@@ -157,7 +153,7 @@ h3 {
 
 /* Sidebar */
 
-#sidebar {
+.sidebar {
   position: absolute;
   left: -1.9em;
   top: 1.5em;
@@ -167,11 +163,11 @@ h3 {
   -o-transition: left 300ms ease-out;
 }
 
-#sidebar:hover {
+.sidebar:hover {
   left: -8em;
 }
 
-#sidebar a.nav {
+.sidebar a.nav {
   color: #CCCCCC;
   text-decoration: none;
   display: block;
@@ -179,31 +175,40 @@ h3 {
   background-color: #151515;
 }
 
-#sidebar a.nav span {
+.sidebar a.nav span {
   color: #FFFFFF;
   display: inline-block;
   width: 2em;
 }
 
-#sidebar a.nav.active,
-#sidebar a.nav:hover {
+.sidebar a.nav.active,
+.sidebar a.nav:hover {
   background-color: #FFFFFF;
   color: #888a85;
 }
 
-#sidebar a.nav.active span,
-#sidebar a.nav:hover span {
+.sidebar a.nav.active span,
+.sidebar a.nav:hover span {
   color: #00add7;
 }
 
-#sidebar a.nav.active {
+.sidebar a.nav.active {
   cursor: auto;
 }
 
 .svg-container {
   position: absolute;
   width: 440px;
+}
+
+#views-container,
+.view-container,
+.svg-container {
   height: 646px;
+}
+
+#views-container {
+  overflow: hidden;
 }
 
 .square-detail-panel,
@@ -353,6 +358,24 @@ a.btn:hover {
   background-image: url('../images/ui/map-tab.png');
 }
 
+.inline-tab {
+  text-decoration: none;
+  color: #808080;
+  font-size: 1.2em;
+}
+
+.inline-tab.active {
+  color: #00add7;
+}
+
+.inline-tab-view {
+  display: none;
+}
+
+.inline-tab-view.visible {
+  display: block;
+}
+
 .curve-view {
   overflow: auto; 
 }
@@ -422,6 +445,28 @@ table.custom-table a:hover {
   border-bottom: 1px dotted #00add7;
 }
 
+table.custom-table.stripped-table {
+  border: none;
+}
+
+table.custom-table.stripped-table th {
+  text-transform: uppercase;
+}
+
+table.custom-table.dark th {
+  color: #e6e6e6;
+}
+
+table.custom-table.dark {
+  color: #b3b3b3;
+}
+
+table.custom-table.dark td {
+  border-top: 1px solid #333333;
+}
+
+/* Points */
+
 .nvd3 .nv-groups .nv-point.active {
   stroke-opacity: 0.5 !important;
   fill-opacity: 0.5 !important;
@@ -441,4 +486,62 @@ circle.client:hover {
   fill-opacity: 0.9;  
 }
 
+/* Overview */
 
+#overview {
+  z-index: 1000;
+  position: absolute;
+  color: #FFFFFF;
+  top: 2.7em;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  display: none;
+  opacity: 0;
+  transition: opacity 200ms linear;
+  -webkit-transition: opacity 200ms linear;
+  -moz-transition: opacity 200ms linear;
+  -o-transition: opacity 200ms linear;
+}
+
+#overview.visible {
+  opacity: 1;
+  display: block;
+}
+
+#overview a.close {
+  color: #FFFFFF;
+}
+
+a.close {
+  text-decoration: none;
+}
+
+.overview-stat:first-child {
+  margin-left: 0;
+}
+
+.overview-stat {
+  margin: 1em 1.5em;
+  color: #ececec;
+}
+
+.overview-stat .big {
+  font-size: 4em;
+}
+
+#overview .tabs-wrapper {
+  margin-top: 1em;
+}
+
+#logo {
+  margin-top: 0.2em;
+  width: 77px;
+  height: 37px;
+  background: url('../images/ui/logo.png') no-repeat 0 0;
+}
+
+#logo:hover {
+  background-position: 0 -37px;
+}

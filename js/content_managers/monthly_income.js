@@ -1,19 +1,15 @@
-loopa.content_managers.daily = function(opts) {
+loopa.content_managers.monthly_income = function(opts) {
   var _self = {
-    file: "data/per_day_avg.csv",
+    file: "per_month.csv",
     avg_key: 'AVERAGE',
-    days: [
-      {data_key: 'mo', day_value: 0},
-      {data_key: 'tu', day_value: 1},
-      {data_key: 'we', day_value: 2},
-      {data_key: 'th', day_value: 3},
-      {data_key: 'fr', day_value: 4},
-      {data_key: 'sa', day_value: 5},
-      {data_key: 'su', day_value: 6}
+    months: [
+      'january','february','march','april','may',
+      'june','july','august',
+      'september','october','november','december'
     ],
     data: {},
     load: function() {
-      d3.csv(_self.file, function(error,data) {
+      d3.csv(loopa.data.getFilename(_self.file), function(error,data) {
         if(error) {
             
         }
@@ -28,22 +24,19 @@ loopa.content_managers.daily = function(opts) {
     parseRow: function(row) {
       obj = {
         key: 'KM ' + row.id,
-        values: this.getDayValues(row)
+        values: this.getMonthValues(row)
       };      
       return obj;      
     },
-    getDayValues: function(row) {
+    getMonthValues: function(row) {
       var values = [];
-      this.days.forEach(function(hash){
+      this.months.forEach(function(month,index){
         values.push({
-          day: hash.day_value,
-          income: +row[hash.data_key + 'income']
+          month: index,
+          income: +row['income-' + month] || 0
         });
       });
       return values;
-    },
-    getValues: function(object){
-      
     },
     get: function(id) {            
       return [_self.data[id], _self.data[_self.avg_key]];

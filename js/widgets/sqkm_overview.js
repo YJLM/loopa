@@ -1,4 +1,4 @@
-var sqkm_overview = function(opts) {
+loopa.widgets.sqkm_overview = function(opts) {
   var _self = {
     container: null,    
     km_container: null,

@@ -1,10 +1,10 @@
 loopa.content_managers.product_income = function(opts) {
   var _self = {
-    file: 'data/product_income.csv',
+    file: 'product_income.csv',
     avg_key: "AVERAGE",
     data: {},
     load: function() {
-      d3.csv(this.file, function(error, data){
+      d3.csv(loopa.data.getFilename(this.file), function(error, data){
         if(error){
         
         }
