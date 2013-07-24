@@ -65,6 +65,10 @@ loopa.content_managers.top_products = function(opts) {
         categories = null;
       }
       return categories;
+    },
+    reset: function() {
+      this.data = {};
+      this.load();
     }
   };
   for(var key in opts) _self[key] = opts[key];

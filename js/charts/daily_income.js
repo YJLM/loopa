@@ -37,6 +37,9 @@ loopa.charts.daily_income = function(opts) {
         
         return _self.chart;
       });
+    },
+    reset: function() {
+      this.content_manager.reset();
     }
   };
   for(var key in opts) _self[key] = opts[key];

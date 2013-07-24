@@ -126,6 +126,10 @@ loopa.charts.top_products = function(opts) {
       var old_view = this.view_stack.pop();
       old_view.classed('active',false);
       this.view_stack.slice(-1)[0].classed('active',true);
+    },
+    reset: function() {
+      this.content_manager.reset();
+      this.product_chart.reset();
     }
   };
   for(var key in opts) _self[key] = opts[key];

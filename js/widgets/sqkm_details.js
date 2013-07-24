@@ -86,6 +86,12 @@ loopa.widgets.sqkm_details = function(opts) {
     },
     addChart: function(chart) {
       this.charts.push(chart);
+    },
+    reset: function() {
+      this.charts.forEach(function(chart){ 
+        chart.reset();
+      });
+      this.map.content_manager.reset();
     }        
   };
   for(key in opts) _self[key] = opts[key];

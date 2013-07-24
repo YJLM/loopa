@@ -23,6 +23,10 @@ loopa.content_managers.totals = function(opts) {
     },
     get: function(id) {      
       return _self.data[id];
+    },
+    reset: function() {
+      this.data = {};
+      this.load();
     }
   };
   for(key in opts) _self[key] = opts[key];

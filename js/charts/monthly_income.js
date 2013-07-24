@@ -34,6 +34,9 @@ loopa.charts.monthly_income = function(opts) {
         _self.svg.datum(data).transition().call(_self.chart);        
         return _self.chart;
       });
+    },
+    reset: function() {
+      this.content_manager.reset();
     }
   };
   for(var key in opts) _self[key] = opts[key];

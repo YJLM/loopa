@@ -5,11 +5,9 @@ loopa.views.daily = {
   current_day_container: null,
   active_view_switcher: null,
   view_panel: null,
-  ranking_cm: null,
   container: null,
   init: function() {
-    this.initContainer();
-    this.initRankingContentManager();
+    this.initContainer();    
     this.initMap();
     this.initDetails();
     this.initViewSwitcher();
@@ -20,9 +18,6 @@ loopa.views.daily = {
   },
   initContainer: function() {
     this.container = d3.select('#daily-view');
-  },
-  initRankingContentManager: function() {
-    this.ranking_cm = loopa.content_managers.sqkm_ranking();
   },
   initViewPanel: function() {
     this.view_panel = d3.select('#daily-view-panel');
@@ -43,9 +38,7 @@ loopa.views.daily = {
   initOverview: function() {
     var _self = this;
     var content_manager = loopa.content_managers.totals();
-    content_manager.load(function(data){
-      _self.ranking_cm.load(data);
-    });
+    content_manager.load();
     this.sqkm_overview = loopa.widgets.sqkm_overview({
       container: this.container.select('.square-km-overview'),
       content_manager: content_manager,
@@ -67,8 +60,10 @@ loopa.views.daily = {
     this.addRankingChart();
   },
   addRankingChart: function() {
+    var cm = loopa.content_managers.sqkm_ranking();
+    cm.load();
     var chart = loopa.charts.sqkm_ranking({
-      content_manager: this.ranking_cm,
+      content_manager: cm,
       container: this.sqkm_details.tabs_view_wrapper.select('.curve-view')
     });
     this.sqkm_details.addChart(chart);
@@ -142,5 +137,13 @@ loopa.views.daily = {
     var lat = bottom_left[1] + (top_right[1] - bottom_left[1]) / 2;
     var long = bottom_left[0] + (top_right[0] - bottom_left[0]) / 2;
     return [lat, long];    
+  },
+  reset: function() {
+    this.showViewPanel();
+    this.sqkm_details.hide();
+    this.sqkm_overview.hide();
+    this.sqkm_overview.reset();
+    this.sqkm_details.reset();
+    this.map_controller.reset();
   } 
 };

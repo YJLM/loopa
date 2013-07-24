@@ -1,12 +1,13 @@
 var app = {  
   view_height: 646,
+  hash_check_frecuency: 500,
   init: function() {
     this.initCompany();
     this.initViews();
-    this.initNav();    
-  },
+    this.initNav();       
+  },    
   initCompany: function() {
-    loopa.company_id = +window.location.hash.replace('#','') || 2;
+    loopa.company_id = 1;
   },
   initNav: function() {
     var _self = this;
@@ -22,6 +23,9 @@ var app = {
       loopa.views.overview.show();
       _self.setActiveNav(d3.select(this));
     });
+    d3.selectAll('a.company-trigger').on('click', function(){
+      loopa.setCompanyId(d3.select(this).attr('data-company-id'));
+    });    
   },
   setActiveNav: function(active_trigger) {
     d3.select('a.nav.active').classed('active',false);

@@ -47,6 +47,10 @@ loopa.content_managers.daily_income = function(opts) {
     },
     get: function(id) {            
       return [_self.data[id], _self.data[_self.avg_key]];
+    },
+    reset: function() {
+      this.data = {};
+      this.load();
     }
   };
   for(key in opts) _self[key] = opts[key];

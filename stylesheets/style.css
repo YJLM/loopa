@@ -545,3 +545,38 @@ a.close {
 #logo:hover {
   background-position: 0 -37px;
 }
+
+/* Dropdown */
+
+.dropdown-container:hover .dropdown {
+  display: block;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  z-index: 100;
+  background-color: #1a1a1a;
+  box-shadow: 0px 2px 2px #CCCCCC;
+  -webkit-box-shadow: 0px 2px 2px #CCCCCC;
+  -moz-box-shadow: 0px 2px 2px #CCCCCC;    
+  border-radius: 0px 0px 3px 3px;
+  -webkit-border-radius: 0px 0px 3px 3px;
+  -moz-border-radius: 0px 0px 3px 3px;
+  -o-border-radius: 0px 0px 3px 3px;
+  overflow: hidden;
+  display: none;
+}
+
+.dropdown a {
+  display: block;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  color: #FFFFFF;
+  font-size: 0.9em;
+}
+
+.dropdown a:hover {
+  background-color: #FFFFFF;
+  color: #00add7;
+}

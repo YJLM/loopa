@@ -28,6 +28,10 @@ loopa.content_managers.product_income = function(opts) {
     },
     get: function(id) {
       return [_self.data[_self.avg_key], _self.data[id]];
+    },
+    reset: function() {
+      this.data = {};
+      this.load();
     }
   };
   for(var key in opts) _self[key] = opts[key];

@@ -100,10 +100,9 @@ loopa.widgets.map_controller = function(opts) {
                             })
                             .classed('square-km',true)
                             .on("click", function(data){ _self._squareOnClick(data, d3.select(this)); });
-                            
-      this.map.on("viewreset", function(){ _self.reset(features); });
-      this.reset(features);
-      this.centerMap();      
+      this.map.on("viewreset", function(){ _self.onViewReset(features); });
+      this.onViewReset(features);
+      this.centerMap();
     },
     centerMap: function() {
       var max_latitude = d3.max(this.feature_collection.features, function(feature) { 
@@ -158,7 +157,7 @@ loopa.widgets.map_controller = function(opts) {
       var long = bottom_left[0] + (top_right[0] - bottom_left[0]) / 2;
       return [lat, long];    
     },    
-    reset: function(features) {      
+    onViewReset: function(features) {      
       var bottom_left = this.project(this.bounds[0]),
           top_right = this.project(this.bounds[1]);
 
@@ -169,6 +168,11 @@ loopa.widgets.map_controller = function(opts) {
           .style("margin-top", top_right[1] + "px");
       this.g.attr("transform", "translate(" + -bottom_left[0] + "," + -top_right[1] + ")");            
       features.attr("d", this.path);
+    },
+    reset: function() {
+      this.feature_collection = [];
+      this.g.selectAll("path").remove();
+      this.loadData();
     },
     project: function(x) {
       var point = this.map.latLngToLayerPoint(new L.LatLng(x[1], x[0]));

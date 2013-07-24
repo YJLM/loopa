@@ -20,7 +20,7 @@ loopa.charts.sqkm_ranking = function(opts) {
       });
       this.chart.xAxis.tickFormat(function(d){
         return "";
-      }).staggerLabels(true);
+      });
       this.chart.yAxis.tickFormat(function(d){
         return d.toShortString();
       });
@@ -63,6 +63,9 @@ loopa.charts.sqkm_ranking = function(opts) {
         }
       });
       return index;
+    },
+    reset: function() {
+      this.content_manager.reset();
     }
   };
   for(var key in opts) _self[key] = opts[key];

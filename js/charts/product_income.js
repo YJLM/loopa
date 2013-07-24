@@ -30,7 +30,10 @@ loopa.charts.product_income = function(opts) {
         _self.svg.datum(_self.data).transition().call(_self.chart);        
         return _self.chart;
       });
-    }  
+    },
+    reset: function() {
+      this.content_manager.reset();
+    } 
   };
   for(var key in opts) _self[key] = opts[key];
   _self.init();

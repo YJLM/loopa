@@ -5,6 +5,13 @@ var loopa = {
   maps: {},
   widgets: {},
   company_id: null,
+  setCompanyId: function(company_id) {
+    if(loopa.company_id != company_id) {
+      loopa.company_id = company_id;
+      loopa.views.daily.reset();
+      loopa.views.monthly.reset();
+    }    
+  },
   utils: {
     isEmpty: function(obj) {
       for(var name in obj) return false;
