@@ -132,9 +132,7 @@ loopa.widgets.map_controller = function(opts) {
     _squareOnClick: function(data, element) {
       this.active_km = element;
       var latLng = this.getSquareCenter(data.geometry.coordinates[0][0], data.geometry.coordinates[0][2]);
-      if(this.last_marker) {
-        this.map.removeLayer(this.last_marker);
-      }
+      this.removeLastMarker();
       this.last_marker = L.marker(latLng)
                           .addTo(this.map)
                           .bindPopup(this.getMarkerPopupMarkup(data));
@@ -142,6 +140,11 @@ loopa.widgets.map_controller = function(opts) {
         _self.last_marker.openPopup();
       },100);
       this.squareOnClick(data, element);
+    },
+    removeLastMarker: function() {
+      if(this.last_marker) {
+        this.map.removeLayer(this.last_marker);
+      }
     },
     getMarkerPopupMarkup: function(data) {
       var s = '<span class="blue uppercase">' + this.current_date + ' stats </span><br />';
@@ -172,6 +175,7 @@ loopa.widgets.map_controller = function(opts) {
     reset: function() {
       this.feature_collection = [];
       this.g.selectAll("path").remove();
+      this.removeLastMarker();
       this.loadData();
     },
     project: function(x) {
