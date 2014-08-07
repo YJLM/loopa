@@ -34,7 +34,7 @@ loopa.maps.clients_map = function(opts) {
         center: this.center,
         zoom: this.zoom
       })
-      .addLayer(new L.TileLayer(loopa.config.cloudmade.layer_url() ));
+      .addLayer(new L.TileLayer(loopa.config.mapbox.layer_url() ));
     },
     update: function(id,coordinates,zoom) {      
       this.map.setView(coordinates, zoom || this.zoom);

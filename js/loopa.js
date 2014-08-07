@@ -24,6 +24,14 @@ var loopa = {
     }
   },
   config: {
+    mapbox: {
+      endpoint: "https://{s}.tiles.mapbox.com/v3/",
+      map_id: "mit.ig2gb74f",
+      tile_size:256,
+      layer_url: function(){
+        return this.endpoint + this.map_id + "/{z}/{x}/{y}.png";
+      }
+    },
     cloudmade: {
       endpoint: "http://{s}.tile.cloudmade.com",
       api_key: "82657b936bb44375b3e137120221986d",

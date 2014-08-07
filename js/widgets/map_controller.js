@@ -60,7 +60,7 @@ loopa.widgets.map_controller = function(opts) {
         center: this.center,
         zoom: this.zoom
       })
-      .addLayer(new L.TileLayer(loopa.config.cloudmade.layer_url() ));
+      .addLayer(new L.TileLayer(loopa.config.mapbox.layer_url() ));
     },
     initOverlay: function() {
       this.svg = d3.select(this.map.getPanes().overlayPane).append("svg");
